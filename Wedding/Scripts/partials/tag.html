@@ -1,0 +1,7 @@
+﻿<div class="tag-wrapper" ng-click="DisplayTextArea()">
+    <textarea class="text-area-tags" placeholder="&nbsp;tags ..." ng-hide="!editMode" ng-show="editMode" ng-enter="ParseContent()" ng-blur="ParseContent()" ng-model="textEntered"></textarea>
+
+    <div class="tags" ng-hide="editMode" ng-show="!editMode">
+        <span class="label label-primary" ng-repeat="tag in tags track by $index">{{tag}}</span>
+    </div>
+</div>

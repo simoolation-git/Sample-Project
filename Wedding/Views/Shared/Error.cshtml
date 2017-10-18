@@ -1,0 +1,22 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Oops";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row min-height">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="text-danger msg-header">Ooops!</div>
+        @{
+            if (String.IsNullOrEmpty(ViewBag.errorMessage))
+            {
+                <div class="text-danger msg-text">An error occurred while processing your request.</div>
+            }
+            else
+            {
+                <div class="text-danger msg-text">@ViewBag.errorMessage</div>
+            }
+        }
+    </div>
+</div>

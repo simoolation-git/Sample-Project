@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "_NavBarPartial";
+}
+
+<nav class="navbar bg-white navbar-fixed-top">
+    <div class="container">
+        <div class="col-xs-2 padding-0">
+            <a class="navbar-brand" href="/" title="ZenZoy News Logo">
+                <img src="~/images/zenzoy-logo-text.png" class="img-fluid logo hidden-md-down" alt="ZenZoy" />
+                <img src="~/images/logo.png" class="img-fluid logo hidden-lg-up padding-0" alt="ZenZoy" />
+            </a>
+        </div>
+        <div class="col-xs-8 nav navbar-nav">
+            <div class="nav-item width-100">
+                <div class="form-inline">
+                    <span id="search-module">
+                        <searchbar>
+                        </searchbar>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2 nav navbar-nav padding-0">
+            <div class="nav-item pull-xs-right" id="loginPartial">
+            </div>
+        </div>
+    </div>
+</nav>

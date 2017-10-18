@@ -1,0 +1,11 @@
+﻿<div class="cropWrapper">
+    <input id="{{configuration.sourceId}}"
+           name="{{configuration.sourceId}}"
+           type="file"
+           style="display:none"
+           onchange="angular.element(this).scope().fileNameChanged(this)" />
+
+    <div id="new-image-wrap" ng-click="selectFile()">
+        <img class="new-image scale" id="{{configuration.targetDisplayId}}" src="{{configuration.defaultUrl}}" data-scale="best-fill" data-align="center" alt="select image" />
+    </div>
+</div>

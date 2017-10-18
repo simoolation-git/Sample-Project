@@ -1,0 +1,24 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "ZenZoy - Oops";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row">
+    <div class="col-left"></div>
+    <div class="col-mid">
+        <div class="msg-header">
+            404 - Page Not Found!
+        </div>
+        <div class="msg-text">            
+            <a href="https://zenzoy.com"  title="back to ZenZoy">
+                Click here to go back to ZenZoy!
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

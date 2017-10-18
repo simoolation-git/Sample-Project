@@ -1,0 +1,19 @@
+﻿<div id="posted-items-display" ng-controller="posted-items-display-controller" class="card-deck-wrapper">
+    <div className="card-deck">
+        <div class="col-custom ng-cloak" ng-repeat="post in posts" ng-click="openModal(post)">
+            <div class="card-custom">
+                <div class="card-img-custom" ng-style="{'background-image':'url({{post.PhotoUrl}})'}">
+                </div>
+                <div class="card-text-bottom">
+                    <div class="card-title ng-cloak">
+                        {{post.Title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ajax-loading-animation" ng-hide="loaded" ng-show="!loaded">
+        <label>Loading...</label>
+        <img src="/Images/ripple.gif" alt="waiting" />
+    </div>
+</div>

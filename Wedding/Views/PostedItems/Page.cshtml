@@ -1,0 +1,24 @@
+﻿@using Domain.ViewModels
+@model IList<PostedItemViewModel>
+
+@{
+    var pageNumber = ViewBag.PageNumber;
+    ViewBag.Title = "Posted Items, Page Number " + pageNumber.ToString();
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+@section metadata {
+
+    @if (pageNumber > 1)
+    {
+        <link rel="next" href="@Url.Action("Page", "PostedItems", new { pageNumber = pageNumber + 1 }, this.Request.Url.Scheme)" />
+        <link rel="prev" href="@Url.Action("Page", "PostedItems", new { pageNumber = pageNumber - 1 }, this.Request.Url.Scheme)" />
+    }
+    else
+    {
+        <link rel="next" href="@Url.Action("Page", "PostedItems", new { pageNumber = 2 }, this.Request.Url.Scheme)" />
+    }
+}
+
+@Html.Partial("~/Views/Home/_ServerGeneratedPostedItemsPartial.cshtml", Model)
+

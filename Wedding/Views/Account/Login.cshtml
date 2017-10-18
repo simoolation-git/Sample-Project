@@ -1,0 +1,68 @@
+﻿@using Wedding.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login to ZenZoy";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row">
+    <div class="login-form-header">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 cold-s-12 border-right">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+    <div class="hidden-sm-up">
+        <br />
+    </div>
+    <div class="col-md-6 cold-s-12 site-login">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Username or Email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </fieldset>
+                <fieldset class="form-group">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </fieldset>
+                <div class="checkbox small-text">
+                    <label>
+                        <input type="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </label>
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <fieldset class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                </fieldset>
+            }
+            <br />
+            <br />
+            <div class="small-text">
+                <div class="float-right">
+                    @* Enable this once you have account confirmation enabled for password reset functionality*@
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword", "Account", routeValues: null, htmlAttributes: new { @class = "text-deco-none" })
+                </div>
+            </div>
+            <br />
+            <div class="small-text">
+                <div class="float-right">
+                    @Html.ActionLink("Join as a new user", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "text-deco-none" })
+                </div>
+            </div>
+            <br />
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Login Failed!";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row min-height">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="msg-header">@ViewBag.Title</div>
+        <div class="msg-text text-danger">
+            Email is already taken!
+            <br />
+            <br />
+            @Html.ActionLink("Click here to login again!", "login", "account")
+        </div>
+    </div>
+</div>

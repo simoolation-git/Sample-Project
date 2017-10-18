@@ -1,0 +1,9 @@
+﻿<div class="search-wrapper" ng-click="DisplayTextBox()" itemprop="search">
+    <input class="search-bar ng-pristine ng-valid ng-empty ng-touched" type="text" placeholder="Search" ng-hide="!editMode" ng-show="editMode" ng-enter="ParseContent()" ng-model="textEntered">
+
+    <div class="tags" ng-hide="editMode" ng-show="!editMode">
+        <span class="label label-primary" ng-repeat="tag in tags track by $index">{{tag}}</span>
+
+        <i class="mdi mdi-close-circle" ng-click="Clear()"></i>
+    </div>
+</div>

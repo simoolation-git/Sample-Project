@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section metadata {
+    @Html.Partial("_MetaDataPartial")
+
+    @RenderSection("metadata", required: false)
+}
+
+@section styles {
+    @RenderSection("styles", required: false)
+}
+
+@section navbar {
+    @Html.Partial("_NavBarNoSearchPartial")
+}
+
+@section header {
+    @Html.Partial("_HeaderPartial")
+}
+
+@RenderBody()
+
+@section footer {
+    @Html.Action("FooterPartial", "Home", new { area = "" })
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

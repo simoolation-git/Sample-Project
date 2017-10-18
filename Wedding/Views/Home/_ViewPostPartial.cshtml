@@ -1,0 +1,48 @@
+﻿<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="view-post-mainpage-controller"
+     ng-right="next()" ng-left="previous()" ng-swipe-left="next()" ng-swipe-right="previous()">
+    <div>
+        <button type="button" class="prev-btn" aria-label="left" ng-click="previous()">
+            <span aria-hidden="true"  title="previous article">
+                <i class="mdi mdi-chevron-left"></i>
+            </span>
+        </button>
+    </div>
+    <div>
+        <button type="button" class="next-btn" aria-label="right" ng-click="next()" autofocus>
+            <span aria-hidden="true" title="next article">
+                <i class="mdi mdi-chevron-right"></i>
+            </span>
+        </button>
+    </div>
+    <div class="post-modal-dialog center-block">
+        <div class="post-modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" title="close article">
+                    <i class="mdi mdi-close"></i>
+                </span>
+            </button>
+            <div id="postImage" class="post-img-div">
+                <div class="post-img" ng-style="{'background-image':'url('+currentSearchResult.PhotoUrl+')'}">
+                </div>
+            </div>
+            <div class="post-text-div">
+                <div class="post-title ng-cloak">
+                    <a ng-href="{{currentSearchResult.facebookUrl}}" title="article title">
+                        {{currentSearchResult.Title}}
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="javascript:void()" ng-click="shareFeedToFacebook()" data-toggle="tooltip" data-placement="bottom" title="Share on Facebook">
+                        <i class="mdi mdi-36px mdi-facebook-box" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="post-footer">
+                    <span class="mdi mdi-arrow-top-right" aria-hidden="true" ng-cloak title="article source" title="image source">
+                        <a ng-hide="isUserGenerated()" ng-href="{{currentSearchResult.Source}}" target="_blank"  title="ZenZoy generated article">source</a>
+                        <a ng-hide="!isUserGenerated()" href="javascript:void()" title="user generated article">user generated</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "ZenZoy Privacy Policy";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+@Html.Action("PrivacyPartial", "Home", new { area = "" })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

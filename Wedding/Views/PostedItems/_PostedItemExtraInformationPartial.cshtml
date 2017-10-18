@@ -1,0 +1,25 @@
+﻿@model Domain.ViewModels.PostedItemViewModel
+
+@{
+
+    var isUserGenerated = string.IsNullOrEmpty(Model.Source) && !string.IsNullOrEmpty(Model.ApplicationUserId);
+}
+
+<div class="row" itemprop="comment">
+    @*put a comment input box*@
+    @*TODO*@
+</div>
+
+<div class="row margin-top-10" itemprop="isBasedOnUrl">
+    @*<div class="col-xs-12">
+            @if (isUserGenerated)
+                {
+                <label>user generated</label>
+            }
+            else
+            {
+                <a href="@Model.Source" target="_blank" title="Image Source"></a>
+            }
+        </div>*@
+</div>
+

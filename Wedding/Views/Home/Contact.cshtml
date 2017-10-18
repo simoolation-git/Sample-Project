@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "ZenZoy - Contact Us";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="msg-header">
+            Thank you for visiting ZenZoy!
+        </div>
+        <div class="msg-text">
+            Please contact us at
+            <a href="mailto:info@zenzoy.com?Subject=feedback" target="_top" title="ZenZoy Contact Us" itemprop="email">
+                info@ZenZoy.com
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

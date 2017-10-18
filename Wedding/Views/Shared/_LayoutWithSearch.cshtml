@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoContainer.cshtml";
+}
+
+@section metadata {
+    @Html.Partial("_MetaDataPartial")
+
+    @RenderSection("metadata", required: false)
+}
+
+@section styles {
+    @RenderSection("styles", required: false)
+}
+
+@section navbar {
+    @Html.Partial("_NavBarPartial")
+}
+
+@section header {
+    @Html.Partial("_HeaderPartial")
+}
+
+@section carousel {
+    @*@Html.Partial("_CarouselPartial")*@
+}
+
+@RenderBody()
+
+@section footer {
+    <div class="visually-none">
+        @Html.Action("FooterPartial", "Home", new { area = "" })
+    </div>
+}
+
+@section scripts {
+    <script>
+        window.saveLikeDislike = '@Url.Action("LikeDislike", "Social", new { area = "" })';
+    </script>
+
+    <script src="~/Scripts/app/infinite-scroll-controller.js" type="text/javascript"></script>
+
+    @RenderSection("scripts", required: false)
+}
+

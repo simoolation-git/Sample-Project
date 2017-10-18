@@ -1,0 +1,26 @@
+﻿@using Domain.ViewModels;
+
+@{
+    var metaDataViewModel = ViewBag.MetaDataViewModel as MetaDataViewModel;
+}
+
+@*<article itemscope itemtype="http://schema.org/Article"*@
+<div data-permalink="@metaDataViewModel.CanonicalLink"
+     data-sharingurls="[&quot;@metaDataViewModel.CanonicalLink&quot;]"
+     data-img="@metaDataViewModel.ImageSource"
+     data-twitter-title="@ViewBag.Title"
+     data-title="@ViewBag.Title"
+     data-pin-caption="@ViewBag.Title"
+     data-share-image="@metaDataViewModel.ImageSource"
+     data-share-facebook-image="@metaDataViewModel.ImageSource"
+     data-share-pinterest-image="@metaDataViewModel.ImageSource"
+     data-author="ZenZoy News">
+    <header>
+        <h1 class="header-h1">
+            @ViewBag.Title
+        </h1>
+        <div class="title">
+            @ViewBag.Title
+        </div>
+    </header>
+</div>

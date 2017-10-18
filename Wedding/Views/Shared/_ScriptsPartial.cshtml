@@ -1,0 +1,97 @@
+﻿<!-- Start Facebook Sharing -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1154181391280875',
+            xfbml: true,
+            version: 'v2.6',
+            status: true,
+            cookie: true
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- End Facebook Sharing -->
+@*Lucky Orange User Tracking*@
+@*<script type='text/javascript'>
+        window.__lo_site_id = 59620;
+
+        (function () {
+            var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+            wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+        })();
+    </script>*@
+
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            // Disable caching of AJAX responses
+            cache: false
+        });
+
+        $.ajax({
+            url: '@(Url.Action("IsAuthenticated", "Home", null, this.Request.Url.Scheme))',
+            dataType: 'json',
+            success: function (isAuthenticated) {
+                window.userAuthorized = isAuthenticated;
+                amplify.publish("isAuthenticated", isAuthenticated);
+            }
+        });
+
+        $("#loginPartial").load('@(Url.Action("RenderLoginPartial", "Home", null, this.Request.Url.Scheme))');
+
+        $.ajax({
+            url: '@(Url.Action("RefreshToken", "Home", null, this.Request.Url.Scheme))',
+            dataType: 'html',
+            success: function (html) {
+                $("#the-token").html(html);
+                var antiForgeryToken = $('[name=__RequestVerificationToken]').val();
+                amplify.publish("refreshToken", antiForgeryToken);
+            }
+        });
+
+        $.ajax({
+            url: '@(Url.Action("AddNewPostedItemButton", "Home", null, this.Request.Url.Scheme))',
+            dataType: 'html',
+            success: function (html) {
+                $("#add-new-posted-item-button").html(html);
+                amplify.publish("addButtonIsAdded");
+            }
+        });
+    });
+</script>
+
+<script type="application/ld+json">
+    {
+    "@("@context")": "http://schema.org/",
+    "@("@type")": "WebSite",
+    "url": "https://www.zenzoy.com",
+    "logo": "https://zenzoy.com/images/logo.png",
+    "sameAs": [
+    "https://twitter.com/zenzoynews",
+    "https://www.facebook.com/zenzoynews",
+    "https://plus.google.com/+Zenzoynews",
+    "https://instagram.com/Zenzoynews",
+    "https://www.youtube.com/c/Zenzoynews"
+    ],
+    "potentialAction": {
+    "@("@type")": "SearchAction",
+    "target": "https://zenzoy.com/Search/FindPost?term={search_term_string}",
+    "query-input": "required name=search_term_string"
+    },
+    "contactPoint": [{
+    "@("@type")": "ContactPoint",
+    "email": "info@zenzoy.com",
+    "contactType": "customer service"
+    }]
+</script>

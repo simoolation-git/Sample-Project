@@ -1,0 +1,38 @@
+﻿@model Wedding.Models.VerifyCodeViewModel
+@{
+    ViewBag.Title = "ZenZoy - Verify Code";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row min-height">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="msg-header">@ViewBag.Title</div>
+        @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("provider", @Model.Provider)
+            @Html.Hidden("rememberMe", @Model.RememberMe)
+            <div class="msg-text">
+                Enter verification code:
+            </div>
+
+            <fieldset class="form-group">
+                @Html.TextBoxFor(m => m.Code, new { @class = "form-control" }), placeholder = "Verification Code" })
+            </fieldset>
+            <div class="checkbox small-text">
+                <label>
+                    <input type="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberBrowser)
+                    @Html.LabelFor(m => m.RememberBrowser)
+                </label>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <fieldset class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

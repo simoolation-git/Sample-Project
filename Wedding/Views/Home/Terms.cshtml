@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "ZenZoy Terms & Conditions";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+@Html.Action("TermsPartial", "Home", new { area = "" })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

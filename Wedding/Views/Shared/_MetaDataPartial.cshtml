@@ -1,0 +1,49 @@
+﻿@using Domain.ViewModels;
+
+@{
+    var metaDataViewModel = ViewBag.MetaDataViewModel as MetaDataViewModel;
+}
+
+<meta http-equiv='Content-Type' itemprop="encodings" content='text/html; charset=UTF-8'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+<meta name='description' content='@metaDataViewModel.Description'>
+<meta name='keywords' itemprop="keywords" content='@metaDataViewModel.MetadataKeywords'>
+<meta name='news_keywords' itemprop="news_keywords" content='@metaDataViewModel.MetadataKeywords'>
+<meta name="rating" content="General" />
+<meta name="robots" content="all" />
+
+@*fb open graph*@
+<meta property="og:type" content="@metaDataViewModel.FacebookOpenGraph.Type" />
+<meta property="og:site_name" itemprop="alternativeHeadline" content="ZenZoy" />
+<meta property='og:title' itemprop="title name" content='@ViewBag.Title'>
+<meta property='og:image' itemprop="image primaryImageOfPage" content='@metaDataViewModel.ImageSource' />
+<meta property='og:description' itemprop="description" content='@metaDataViewModel.Description' />
+<meta property='og:url' itemprop="sameas" content='@metaDataViewModel.CanonicalLink' />
+<meta property='og:video' content='@metaDataViewModel.VideoSource' />
+<meta property="fb:app_id" content="1154181391280875" />
+
+@*fb og video*@
+<meta property="og:type" content="video">
+<meta property="og:video:url" content='@metaDataViewModel.VideoSource'>
+<meta property="og:video:secure_url" content='@metaDataViewModel.VideoSource' >
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="500">
+<meta property="og:video:height" content="500">
+
+@*twitter*@
+<meta name='twitter:site' itemprop="url" content='@("@ZENZOY")'>
+<meta name='twitter:title' itemprop="name" content='@ViewBag.Title'>
+<meta name='twitter:domain' content='https://www.zenzoy.com'>
+<meta name='twitter:description' content='@metaDataViewModel.Description'>
+<meta name='twitter:image:src' content='@metaDataViewModel.ImageSource'>
+<meta name='twitter:card' content='ZenZoy News - Top & Trending'>
+
+<link rel="alternate" href="http://www.zenzoy.com" />
+<link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+<link type="image/x-icon" rel="icon" href="/favicon.ico" />
+<link rel="publisher" href="https://plus.google.com/+zenzoywedding/" />
+<link rel="canonical" href="@metaDataViewModel.CanonicalLink" />
+<link rel="image_src" href="@metaDataViewModel.ImageSource" />
+<link type="application/rss+xml" title="RSS 2.0" rel="alternate" href="@Url.Action("Feed", "Home", new { area = "" }, this.Request.Url.Scheme)" />

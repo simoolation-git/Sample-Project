@@ -1,0 +1,14 @@
+﻿/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
+    position: relative;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    max-height: 50px;
+    line-height: 50px;
+    background-color: #fff;
+    font-size: 12px;
+    font-family: 'Lucida Grande', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}

@@ -1,0 +1,57 @@
+﻿@using Wedding.HtmlHelpers
+@using Domain.ViewModels
+@model IList<PostedItemViewModel>
+
+@{
+    ViewBag.Title = "ZenZoy News - Top & Trending";
+    Layout = "~/Views/Shared/_LayoutWithSearch.cshtml";
+}
+
+@section metadata {
+    <link rel="next" href="@Url.Action("Page", "PostedItems", new { pageNumber = 2 }, this.Request.Url.Scheme)" />
+}
+
+<div id="infinite-scroll-display" infinite-scroll="nextPage()" infinite-scroll-distance='1' ng-controller="infinite-scroll-controller" infinite-scroll-disabled="infinite_scrolling_disabled">
+    @Html.Partial("_ServerGeneratedPostedItemsPartial", Model)
+    @Html.Action("IndexPartial", "Home", new { area = "" })
+</div>
+
+
+@*<div class="add-button hidden-xs-down" id="add-new-posted-item-button">
+
+    </div>*@
+
+@*@Html.Partial("_ViewPostPartial")*@
+
+@section scripts {
+
+    <script>
+        amplify.subscribe("ShareFacebookClicked", function (data) {
+            FB.XFBML.parse();
+            FB.ui({
+                method: 'share',
+                href: 'https://www.youtube.com/watch?v=70ozGNXeLHA',  //data.link,
+                picture: data.photoUrl,
+                //caption: 'test caption',
+                description: data.title,
+                //quote: data.title,
+                hashtag: data.tags
+            });
+
+            //FB.ui({
+            //    method: 'feed',
+            //    link: data.link
+            //    //'https://www.youtube.com/watch?v=1G4isv_Fylg'
+            //});
+        });
+
+        window.saveLikeDislikeUrl = '@Url.Action("LikeDislike", "Social", new { area = "" }, this.Request.Url.Scheme)';
+        window.getPostedItemDetailsUrl = '@Url.Action("GetPostedItemDetails", "PostedItems", new { area = "" }, this.Request.Url.Scheme)';
+        window.refreshPostedItemPartialUrl = '@string.Format("{0}/PostedItems/RefreshPostedItemPartial", ViewBag.MetaDataViewModel.BaseAddress)';
+        window.baseAddress = '@ViewBag.MetaDataViewModel.BaseAddress';
+    </script>
+
+    <script src="~/Scripts/app/posted-items-controller.js" type="text/javascript"></script>
+
+    @Scripts.Render("~/bundles/react")
+}

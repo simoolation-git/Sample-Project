@@ -1,0 +1,35 @@
+﻿@model Wedding.Models.ExternalLoginConfirmationViewModel
+
+@{
+    ViewBag.Title = "Join ZenZoy";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row min-height">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="msg-header">
+            @ViewBag.Title by associating your email account
+        </div>
+
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            @Html.AntiForgeryToken()
+            <div class="msg-text">
+                @*You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+                    <br />*@
+                Please enter your email below and click Join!
+            </div>
+            <fieldset class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="submit" value="Join" class="btn btn-primary btn-block" />
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

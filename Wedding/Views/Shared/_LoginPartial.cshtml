@@ -1,0 +1,28 @@
+﻿@using Wedding.HtmlHelpers
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="dropdown nav-item">
+            <a @*href="@Url.Action("Index", "Profile", new { area="" })"*@ role="button" aria-haspopup="true" aria-expanded="false" title="ZenZoy Profile" class="nav-button">
+                @*@Html.GetUserNameHelper()*@
+                <i class="mdi mdi-account account-icon "></i>
+            </a>
+            <div class="dropdown-menu-custom" aria-labelledby="Preview">
+                @Html.ActionLink("Your ZenZoy", "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item-custom", style = "text-decoration:none;" })
+                <a class="dropdown-item-custom" style="text-decoration:none;" href="javascript:document.getElementById('logoutForm').submit()" title="Logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <li class="nav-item pull-xs-right nav-button">
+        @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+    </li>
+
+}

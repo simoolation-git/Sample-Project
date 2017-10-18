@@ -1,0 +1,13 @@
+﻿
+@if (!Request.IsAuthenticated)
+{
+    <a href="javascript:void()" onclick="amplify.publish('displayLoginModalForProfilePage', 'returnUrl=@Url.Action("Index", "Profile")');" data-toggle="tooltip" data-placement="left" title="Add a Question">
+        <i class="mdi mdi-plus-circle" aria-hidden="true"></i>
+    </a>
+}
+else
+{
+    <a href="@Url.Action("Index", "Profile")" data-toggle="tooltip" data-placement="left" title="Add a Question">
+        <i class="mdi mdi-plus-circle hidden-sm" aria-hidden="true"></i>
+    </a>
+}

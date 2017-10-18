@@ -1,0 +1,9 @@
+﻿header .title{
+    display: none !important; 
+    visibility:hidden;
+}
+
+.header-h1{
+    display: none !important; 
+    visibility:hidden;
+}

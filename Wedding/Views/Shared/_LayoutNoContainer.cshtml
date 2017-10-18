@@ -1,0 +1,74 @@
+﻿@using Wedding.Models
+@using Wedding.Helpers
+
+<!DOCTYPE html>
+<html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" @Html.Raw(@ViewBag.HtmlSchema)>
+<head>
+    <script src="~/Scripts/pagelets/big-pipe.js" type="text/javascript"></script>
+
+    @RenderSection("metadata", required: true)
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+    @Html.Partial("_GoogleAnalytics")
+</head>
+<body class="main-body">
+
+    @RenderSection("navbar", required: true)
+
+    @RenderSection("header", required: true)
+
+    @RenderSection("carousel", required: false)
+
+    <div style="min-height:88vh">
+        @RenderBody()
+
+        @Html.Action("LoginRegisterModalPartial", "Home", new { area = "" })
+    </div>
+
+    <div id="the-token">
+
+    </div>
+
+    @RenderSection("footer", required: false)
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Html.Partial("_ScriptsPartial")
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @{
+
+        //Response.Clear();
+        //Response.BufferOutput = false;
+        //Response.Flush();
+
+        //Html.ExecutePagelets();
+        //Response.Flush();
+    }
+
+    @*@Html.Action("PageLet1", "PostedItems", new { area = "" });*@
+    @{
+//Response.Clear();
+//Html.RenderAction("PageLet1", "PostedItems", new { area = "" });
+//Response.Flush();
+    }
+
+    @if (Request.Cookies["js"] == null)
+    {
+        <script>
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + 90);
+            document.cookie = "js=true;expires=" + exdate.toUTCString();
+        </script>
+    }
+
+</body>
+
+</html>

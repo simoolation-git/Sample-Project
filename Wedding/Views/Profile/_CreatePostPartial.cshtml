@@ -1,0 +1,43 @@
+﻿<div class="modal fade" id="NewPostModal" tabindex="-1" role="dialog" aria-labelledby="NewPost" aria-hidden="true">
+    <div class="modal-dialog width-650 max-width-100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" title="close">&times;</span>
+                </button>
+                <h5 class="modal-title">Add Question</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6" id="crop-module">
+                        <croptool class="width-100 float-none">
+                        </croptool>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <textarea class="new-post-title center-block" id="Title" name="Title" placeholder="&nbsp;title ..." onkeyup="amplify.publish('titleChanged', this.value);"></textarea>
+
+                        <div id="tag-module" class="center-block">
+                            <tagtool>
+                            </tagtool>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6" id="group-error-module">
+                        <grouperror>
+                        </grouperror>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-warning hide float-left" onclick="amplify.publish('deletePostedItem');" id="deletePostedItem">&nbsp;Delete&nbsp;</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">&nbsp;Cancel&nbsp;</button>
+
+                <button type="button" class="btn btn-sm btn-primary" id="savePostedItem" onclick="amplify.publish('saveImageToCloud');">
+                    <div class="buttonLabel" id="saveLabel">Save</div>
+                    <div class="buttonLabel" id="savingLabel" style="display:none">
+                        <span title="saving">Saving</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

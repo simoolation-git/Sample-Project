@@ -1,0 +1,106 @@
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    height: 375px;
+    margin-bottom: 10px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+    top: 10px;
+    color: darkslateblue;
+}
+
+    .carousel-caption .carousel-header {
+        font-size: x-large;
+        font-weight: 200;
+        margin: 20px 0 0 0;
+    }
+
+        .carousel-caption .carousel-header h2 {
+            font-size: 22px;
+        }
+
+.icon-prev, icon-next {
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+    .carousel-inner > .active {
+        height: 100%;
+    }
+
+/* I got it from here, pretty cool */
+/*http://www.learnsomethings.com/2014/07/10/make-your-twitter-bootstrap-carousel-images-zoom-100-horizontal-and-vertical-while-keeping-the-aspect-ratio/*/
+
+#image1 {
+    background-image: url("../Images/zenzoy-wedding-carousel-1.jpg");
+}
+
+#image2 {
+    background-image: url("../Images/zenzoy-wedding-carousel-2.jpg");
+}
+
+#image3 {
+    background-image: url("../Images/zenzoy-wedding-carousel-3.jpg");
+}
+
+.carousel-indicators {
+    bottom: 0;
+}
+
+.carousel-item {
+    height: 375px;
+    /*background-attachment:fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.carousel div#image1.carousel-item .carousel-caption {
+    /*color: snow;
+    font-size: 22px;
+    text-align: center;
+    margin: 55px auto auto -5%;
+    max-width: 400px;
+    padding-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.60);*/
+    color: snow;
+    font-size: 18px;
+    text-align: center;
+    max-width: 400px;
+    height: 100%;
+    top: 0;
+    left: 10%;
+    padding: 85px 25px;
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+.carousel div#image2.carousel-item .carousel-caption {
+    margin-top: 40px;
+    color: white;
+    font-size: 20px;
+}
+
+.carousel div#image3.carousel-item .carousel-caption {
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    margin: 85px 0 auto auto;
+    max-width: 400px;
+}
+
+.carousel-body {
+    margin: 20px 0;
+    font-size: 18px;
+}

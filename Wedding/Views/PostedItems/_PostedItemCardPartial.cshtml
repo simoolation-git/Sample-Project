@@ -1,0 +1,58 @@
+﻿@model Domain.ViewModels.PostedItemViewModel
+
+@{
+    Layout = "";
+    var returnUrl = Html.Raw(Url.Action("Index", "PostedItems", new { area = "", id = Model.Id, slug = Model.Slug }));
+    var isLike = (Model.IsLiked == null ? "null" : Model.IsLiked.Value.ToString().ToLower());
+    var likeButtonClass = (Model.IsLiked != null && Model.IsLiked.Value) ? new MvcHtmlString("mdi mdi-heart mdi-36px float-right cursor-pointer") : new MvcHtmlString("mdi mdi-heart-outline mdi-36px float-right cursor-pointer");
+    var likeButtonOnclick = User.Identity.IsAuthenticated ? new MvcHtmlString("amplify.publish('LikeButtonIsClicked', " + isLike + "," + Model.Id + ");") : new MvcHtmlString("amplify.publish('displayLoginModalForProfilePage', 'returnUrl=" + returnUrl + "');");
+    var postedItemUrl = Html.Raw(string.Format("PostedItems/{0}/{1}", Model.Id, Model.Slug));
+    var hrefLink = string.Format("href=\"{0}/{1}\"", ViewBag.MetaDataViewModel.BaseAddress, postedItemUrl);
+    var fbLink = String.Format(Url.Action("Index", "PostedItems", new { area = "", id = Model.Id }, this.Request.Url.Scheme));
+    var tags = "#" + String.Join(" #", Model.Tags);
+}
+
+<div class="col-custom" id="posted-item-card-@Model.Id">
+    <div class="card-custom" itemscope itemtype="http://schema.org/NewsArticle">
+        <div itemprop="image" class="posted-item-card-image">
+            <a onclick="amplify.publish('DisplayVideo', '@Model.Id', '@Model.VideoSourceUrl')" title="@Model.Title">
+                <span class="card-img-custom" title="@Model.Title" style="background-image:url(@Model.PhotoUrl);"></span>
+            </a>
+        </div>
+        <div itemprop="articleBody">
+            <div class="row card-text card-likeOrDislike-div">
+                <div class="col-xs-4">
+                    <a href="javascript:void()" onclick="amplify.publish('ShareFacebookClicked', { title:'@Model.Title' , photoUrl:'@Model.PhotoUrl' , link:'@(fbLink)', tags:'@(tags)', videoUrl:'@Model.VideoSourceUrl'})" data-toggle="tooltip" data-placement="bottom" title="Share on Facebook">
+                        <i class="mdi mdi-36px mdi-facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-xs-4 more-div">
+                    <a @(Html.Raw(hrefLink)) title="@Model.Title" class="more-text">
+                        READ
+                    </a>
+                </div>
+                <div class="col-xs-4">
+                    <a onclick="@(likeButtonOnclick)" title="like">
+                        <i id="like-button-@Model.Id" class="@(likeButtonClass)"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card-text-bottom" itemprop="headline">
+                <div class="card-title">
+                    @if (!Model.IsPostedItemPage)
+                    {
+                        <a @(Html.Raw(hrefLink)) title="@Model.Title">
+                            <span id="title">@Model.Title</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <div id="title" title="@Model.Title">@Model.Title</div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="visually-none" itemprop="keywords">@Model.Tags</div>
+    </div>
+</div>
+

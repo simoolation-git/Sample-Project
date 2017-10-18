@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "ZenZoy - Welcome";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row min-height">
+    <div class="col-xs-10 col-md-6 col-lg-5 col-xl-4 center-block float-none">
+        <div class="msg-header">@ViewBag.Title</div>
+        <div class="msg-text">Thank you for confirming your email.</div>
+        <div class="msg-text text-deco-none">
+            Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-deco-none" })
+        </div>
+    </div>
+</div>

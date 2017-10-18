@@ -1,0 +1,24 @@
+﻿.tag-wrapper {
+    background-color: #fff;
+    border: 0.5px solid #eee;
+    border-radius: .1rem;
+    position: relative;
+    float: none;
+    height: 100px;
+    width: 300px;
+    margin: 15px auto; 
+}
+
+    .tag-wrapper textarea {
+        height: 100px;
+        width: 300px;
+        border: 0.5px solid #eee;
+        border-radius: .1rem;
+        font-size: 0.75em;
+    }
+
+.tags span {
+    margin-right: 1px;
+    margin-left: 1px;
+    font-size: 0.6em;
+}

@@ -1,0 +1,64 @@
+﻿@model Wedding.Models.ChangePasswordViewModel
+
+@{
+    ViewBag.Title = "ZenZoy - Settings";
+    Layout = "~/Views/Shared/_LayoutWithFooter.cshtml";
+}
+
+<div class="row">
+    <div class="card-wide-no-padding">
+        <div class="card-header">
+            Account Settings
+        </div>
+        <div class="card-block card-text settings-item">
+            <a class="nav-link settings-item" data-toggle="modal" data-target="#changePassModal" title="Change Password">
+                Change Password
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"  title="close">&times;</span>
+                </button>
+                <h5 class="modal-title">Change Password</h5>
+            </div>
+
+            @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="row form-row">
+                    @Html.LabelFor(m => m.OldPassword, new { @class = "col-xs-5 control-label" })
+                    <div class="col-xs-7">
+                        @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control float-right" })
+                    </div>
+                </div>
+                <div class="row form-row">
+                    @Html.LabelFor(m => m.NewPassword, new { @class = "col-xs-5 control-label" })
+                    <div class="col-xs-7">
+                        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control float-right" })
+                    </div>
+                </div>
+                <div class="row form-row">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-xs-5 control-label" })
+                    <div class="col-xs-7">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control float-right" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Change Password</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

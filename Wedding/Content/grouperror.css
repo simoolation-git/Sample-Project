@@ -1,0 +1,13 @@
+﻿.groupError {
+    font-size: 12px;
+    float: none;
+    width: 300px;
+    margin: 10px auto;
+}
+
+    .groupError ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }

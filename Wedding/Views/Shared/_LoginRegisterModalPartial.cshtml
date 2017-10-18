@@ -1,0 +1,27 @@
+﻿@using Wedding.Models
+
+<div class="modal fade" id="LoginRegisterModal" tabindex="-1" role="dialog" aria-labelledby="Login or Join" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h5 class="modal-title" style="text-align:center">Login Or Join</h5>
+            </div>
+            <div class="modal-body">
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+                @Html.ActionLink("Login", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "modal_login", @class = "btn btn-success btn-block", title = "login to ZenZoy" })
+
+                <span class="horizental_line" title="or">
+                    <span class="horizental_line_content">OR</span>
+                </span>
+
+                @Html.ActionLink("Join the Fun", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "modal_register", @class = "btn btn-primary btn-block", title = "register to ZenZoy" })
+            </div>
+        </div>
+    </div>
+</div>

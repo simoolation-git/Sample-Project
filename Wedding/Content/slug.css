@@ -1,0 +1,60 @@
+﻿.related-items-title {
+    width: 260px;
+    float: none;
+    margin: 60px auto 20px;
+    font-size: 28px;
+    font-family: 'Lucida Grande', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.more-text {
+    display: none;
+}
+
+.card-title {
+    display: block;
+    margin: 15px 30px;
+    font-size: 30px;
+    font-family:'Lucida Grande', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-deck .card-title {
+    display: none;
+}
+
+.col-custom {
+    width: 500px;
+}
+
+.card-deck .col-custom {
+    width: 100%;
+}
+
+/*@media (min-width: 750px) {
+
+    .card-deck .col-custom {
+        width: 50%;
+    }
+}*/
+
+/*@media (min-width: 500px) {*/
+.posted-item-card {
+    width: 500px;
+}
+
+    .posted-item-card .card-custom {
+        min-width: 500px;
+        max-width: 500px;
+    }
+
+    .posted-item-card .card-img-custom {
+        width: 499px;
+        height: 500px;
+    }
+/*}*/
+
+/*@media (min-width: 1000px) {
+
+    .card-deck .col-custom {
+        width: 33%;
+    }
+}*/

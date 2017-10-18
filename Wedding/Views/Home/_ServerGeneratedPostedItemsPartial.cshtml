@@ -1,0 +1,13 @@
+﻿@using Domain.ViewModels
+@model IList<PostedItemViewModel>
+
+<div class="card-deck-wrapper" id="serverGeneratedPostedItemsWrapper">
+    <a href="#" id="startOfPostedItems" style="visibility: hidden"></a>
+    <div class="card-deck">
+        @foreach (var postedItem in Model)
+        {
+            postedItem.IsPostedItemPage = false;
+            @Html.Action("RenderPostedItemPartial", "PostedItems", postedItem);
+        }
+    </div>
+</div>

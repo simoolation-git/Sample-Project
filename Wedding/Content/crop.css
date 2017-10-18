@@ -1,0 +1,19 @@
+﻿.cropWrapper #new-image-wrap {
+    background-color: #fff;
+    border: 0.5px solid #eee;
+    border-radius: .1rem;
+    position: relative;
+    float: none;
+    margin: 0 auto 15px auto;
+    height: 300px;
+    width: 300px;
+}
+
+.cropWrapper {
+    float: none;
+    width: 100%;
+}
+
+.card-new-post:hover, .cropWrapper {
+    cursor: pointer;
+}

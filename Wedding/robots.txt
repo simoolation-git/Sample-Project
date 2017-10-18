@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Sitemap: https://zenzoy.com/sitemap.xml
+
+User-agent: *
+Sitemap: https://zenzoy.com/news-sitemap.xml
+
+User-agent: *
+Disallow: /PostedItems/RefreshPostedItemPartial/
